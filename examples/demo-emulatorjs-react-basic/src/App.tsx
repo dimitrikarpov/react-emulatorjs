@@ -9,11 +9,7 @@ const App = () => {
 
   const onRomUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return
-
     const file = e.target.files?.[0]
-
-    console.log({ file })
-
     setRom(URL.createObjectURL(file))
   }
 
@@ -23,7 +19,7 @@ const App = () => {
       <button onClick={() => setRom(undefined)}>close rom</button>
       {rom && (
         <Emulator
-          EJS_core="nestopia"
+          EJS_core="nes"
           EJS_gameUrl={rom}
           EJS_pathtodata="https://demo.emulatorjs.org/data/"
           EJS_ready={() => {
