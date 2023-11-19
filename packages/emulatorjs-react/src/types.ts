@@ -337,3 +337,5 @@ export type Settings = MainOptions &
   CoresOptionsCommon &
   CoresOptions[number] &
   AdvancedOptions
+
+export type EJS_core = Settings["EJS_core"]

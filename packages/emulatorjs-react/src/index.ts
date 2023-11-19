@@ -1,2 +1,2 @@
 export { Emulator } from "./Emulator"
-export type { Settings } from "./types"
+export type { Settings, EJS_core } from "./types"

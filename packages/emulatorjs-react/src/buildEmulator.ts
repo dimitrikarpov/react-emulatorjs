@@ -1,14 +1,14 @@
 type Params = {
   height?: number
   width?: number
-  loader?: string
+  loader: string
 }
 
 export const buildEmulator = ({
   width = 640,
   height = 480,
-  loader = "https://demo.emulatorjs.org/data/loader.js",
-}: Params = {}) => {
+  loader,
+}: Params) => {
   const html = document.createElement("html")
   html.innerHTML = `
 <html>
@@ -19,9 +19,16 @@ export const buildEmulator = ({
     <div style="width: ${width}px; height: ${height}px; max-width: 100%">
       <div id="game"></div>
     </div>
-    <script src="${loader}"></script>
+    <script>
+      setTimeout(() => {
+        let script = document.createElement("script");
+        script.src = "${loader}";
+        document.body.append(script);        
+      }, 200)
+    </script>
   </body>
 </html>
 `
+
   return html
 }

@@ -12,8 +12,11 @@ export const Emulator: React.FunctionComponent<Props> = (props) => {
     // @ts-ignore
     const iframeGlobal = iframeRef.current.contentWindow.globalThis
 
+    // @ts-ignore
     iframeGlobal.EJS_player = "#game"
+
     for (const key in props) {
+      // @ts-ignore
       iframeGlobal[key] = props[key as keyof Settings]
     }
   }, [props])
@@ -34,7 +37,9 @@ export const Emulator: React.FunctionComponent<Props> = (props) => {
     }, 100)
   }, [setIframeGlobals])
 
-  const html = buildEmulator().innerHTML
+  const html = buildEmulator({
+    loader: `${props.EJS_pathtodata}/loader.js`,
+  }).innerHTML
 
   return (
     <iframe
