@@ -6,9 +6,12 @@ import { Emulator } from "emulatorjs-react"
 import { CoreSelect } from "./CoreSelect"
 import { Button } from "./@/components/button"
 import type { CoreSelectOption } from "./CoreSelect.types"
+import { BiosSelect } from "./BiosSelect"
 
 const App = () => {
   const [rom, setRom] = useState<string>()
+  const [biosUrl, setBiosUrl] = useState<string>("")
+
   const [platform, setPlatform] = useState<CoreSelectOption>("fceumm")
 
   const onRomUpload = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,25 +22,33 @@ const App = () => {
 
   return (
     <div>
-      <input type="file" onChange={onRomUpload} />
+      <label>
+        ROM
+        <input type="file" onChange={onRomUpload} />
+      </label>
+
       <Button onClick={() => setRom(undefined)}>close rom</Button>
 
       {!rom && <CoreSelect value={platform} onChange={setPlatform} />}
+
+      {platform && (
+        <BiosSelect core={platform} value={biosUrl} onChange={setBiosUrl} />
+      )}
 
       {rom && (
         <Emulator
           EJS_core={platform}
           EJS_gameUrl={rom}
-          // EJS_pathtodata="https://demo.emulatorjs.org/data"
-          // EJS_pathtodata="https://cdn.statically.io/gh/EmulatorJS/EmulatorJS/tree/v4.0.8/data"
-          // EJS_pathtodata="https://cdn.jsdelivr.net/gh/EmulatorJS/EmulatorJS/data"
-          EJS_pathtodata="/data"
-          EJS_ready={() => {
-            console.log("The emulator is ready!")
-          }}
-          EJS_onGameStart={() => {
-            console.log("Game started!")
-          }}
+          EJS_biosUrl={biosUrl}
+          // EJS_biosUrl="https://cdn.statically.io/gh/Abdess/retroarch_system/libretro/Sony%20-%20PlayStation/scph5501.bin"
+          EJS_pathtodata="https://cdn.jsdelivr.net/gh/EmulatorJS/EmulatorJS@latest/data"
+          // EJS_pathtodata="/data"
+          // EJS_ready={() => {
+          //   console.log("The emulator is ready!")
+          // }}
+          // EJS_onGameStart={() => {
+          //   console.log("Game started!")
+          // }}
         />
       )}
     </div>
@@ -45,5 +56,3 @@ const App = () => {
 }
 
 export default App
-
-// https://cdn.jsdelivr.net/gh/jquery/jquery/
