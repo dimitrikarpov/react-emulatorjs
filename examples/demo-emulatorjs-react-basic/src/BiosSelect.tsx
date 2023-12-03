@@ -1,52 +1,49 @@
-import { CoreSelectOption } from "./CoreSelect.types"
-import { Bios, findCoreBioses } from "./bioses"
+import { EJS_core, findCoreBioses } from "emulatorjs-react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./@/components/ui/select"
+// import { CoreSelectOption } from "./CoreSelect.types"
 
 type Props = {
-  core: CoreSelectOption
-  value: string // biosUrl
-  onChange: React.Dispatch<React.SetStateAction<string>>
+  core: EJS_core
+  value: string | undefined
+  onChange: React.Dispatch<React.SetStateAction<string | undefined>>
 }
 
 export const BiosSelect: React.FunctionComponent<Props> = ({
   core,
-  value,
+  value = "none",
   onChange,
 }) => {
-  const bioses = findCoreBioses(core)
+  const bioses = findCoreBioses(core)?.filter(({ url }) => Boolean(url))
 
-  if (bioses.length === 0) return null
+  if (!bioses || bioses.length === 0) return null
+
+  const onChangeSelect = (value: string) => {
+    onChange(value === "none" ? undefined : value)
+  }
 
   return (
     <>
-      <p className="text-lg">Select Bios</p>
-      <div className="flex flex-wrap gap-3"></div>
-      <fieldset className="border border-black rounded-sm p-2 w-fit">
-        <legend>{core} bioses</legend>
-        {bioses.map((bios) => (
-          <>
-            <div className="flex gap-2">
-              <div key={bios.name}>
-                <input
-                  type="radio"
-                  id={bios.name}
-                  value={bios.url}
-                  onClick={() => onChange(bios.url)}
-                  //   checked={value === option}
-                  checked={isChecked(bios, value)}
-                  defaultChecked={false}
-                />
-                <label htmlFor={bios.name} className="pl-3">
-                  {bios.name}
-                </label>
-              </div>
-            </div>
-          </>
-        ))}
-      </fieldset>
+      <Select onValueChange={onChangeSelect} value={value} defaultValue="none">
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="select bios..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="none">without bios</SelectItem>
+          {bioses.map((bios) =>
+            bios.url ? (
+              <SelectItem key={bios.name} value={bios.url}>
+                {bios.name}
+              </SelectItem>
+            ) : null,
+          )}
+        </SelectContent>
+      </Select>
     </>
   )
-}
-
-const isChecked = (bios: Bios, selectedBiosUrl: string) => {
-  return bios.url === selectedBiosUrl
 }

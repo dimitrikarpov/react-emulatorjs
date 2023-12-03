@@ -1,9 +1,11 @@
-import { CoreSelectOption } from "./CoreSelect.types"
-import { platforms } from "./CoreSelect.constants"
+// import { CoreSelectOption } from "./CoreSelect.types"
+import { EJS_core, platforms } from "emulatorjs-react"
+// import { platforms } from "./CoreSelect.constants"
+// import { CoreName } from "./cores"
 
 type Props = {
-  value: CoreSelectOption
-  onChange: (value: CoreSelectOption) => void
+  value: EJS_core
+  onChange: (value: EJS_core) => void
 }
 
 export const CoreSelect: React.FunctionComponent<Props> = ({
@@ -12,27 +14,25 @@ export const CoreSelect: React.FunctionComponent<Props> = ({
 }) => {
   return (
     <>
-      <p className="text-lg">Select Platform</p>
       <div className="flex flex-wrap gap-3">
-        {Object.entries(platforms).map(([name, options]) => (
+        {platforms.map(({ name, cores }) => (
           <fieldset
             key={name}
             className="border border-black rounded-sm p-2 w-fit"
           >
             <legend>{name}</legend>
             <div className="flex gap-2">
-              {options.map((option) => (
-                <div key={option}>
+              {cores.map((core) => (
+                <div key={core}>
                   <input
                     type="radio"
-                    id={option}
-                    value={option}
-                    onClick={() => onChange(option)}
-                    checked={value === option}
-                    defaultChecked={false}
+                    id={core}
+                    value={core}
+                    onChange={() => onChange(core)}
+                    checked={value === core}
                   />
-                  <label htmlFor={option} className="pl-3">
-                    {option}
+                  <label htmlFor={core} className="pl-3">
+                    {core}
                   </label>
                 </div>
               ))}
