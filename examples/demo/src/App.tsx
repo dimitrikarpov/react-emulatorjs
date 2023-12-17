@@ -1,10 +1,8 @@
 import { ChangeEvent, useState } from "react"
-// import reactLogo from "./assets/react.svg"
-// import viteLogo from "/vite.svg"
 import "./App.css"
-import { EJS_core, Emulator, Settings } from "emulatorjs-react"
+import { EJS_core, Emulator, Settings } from "react-emulatorjs"
 import { CoreSelect } from "./CoreSelect"
-import { Button } from "./@/components/button"
+import { Button } from "./@/components/ui/button"
 import { BiosSelect } from "./BiosSelect"
 import {
   Dialog,

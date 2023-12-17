@@ -1,7 +1,4 @@
-// import { CoreSelectOption } from "./CoreSelect.types"
-import { EJS_core, platforms } from "emulatorjs-react"
-// import { platforms } from "./CoreSelect.constants"
-// import { CoreName } from "./cores"
+import { EJS_core, platforms } from "react-emulatorjs"
 
 type Props = {
   value: EJS_core

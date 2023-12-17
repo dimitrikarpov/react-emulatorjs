@@ -12,7 +12,7 @@
     "tsconfig": "*",
     "turbo": "latest"
   },
-  "name": "emulatorjs-wrapper",
+  "name": "react-emulatorjs-repo",
   "packageManager": "npm@9.6.7",
   "workspaces": [
     "packages/*",

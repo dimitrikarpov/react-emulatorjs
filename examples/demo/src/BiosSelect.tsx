@@ -1,4 +1,4 @@
-import { EJS_core, findCoreBioses } from "emulatorjs-react"
+import { EJS_core, findCoreBioses } from "react-emulatorjs"
 import {
   Select,
   SelectContent,
@@ -6,7 +6,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./@/components/ui/select"
-// import { CoreSelectOption } from "./CoreSelect.types"
 
 type Props = {
   core: EJS_core
