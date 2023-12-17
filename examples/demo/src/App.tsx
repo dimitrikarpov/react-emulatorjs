@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { useState } from "react"
 import "./App.css"
 import { EJS_core, Emulator, Settings } from "react-emulatorjs"
 import { CoreSelect } from "./CoreSelect"
@@ -12,18 +12,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./@/components/ui/dialog"
+import { RomSelect } from "./RomSelect"
 
 const App = () => {
   const [rom, setRom] = useState<string>()
   const [biosUrl, setBiosUrl] = useState<string>()
   const [platform, setPlatform] = useState<EJS_core>("fceumm")
   const [isEmulatorDialogOpen, setIsEmulatorDialogOpen] = useState(false)
-
-  const onRomUpload = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files?.[0]) return
-    const file = e.target.files?.[0]
-    setRom(URL.createObjectURL(file))
-  }
 
   const onOpenChange = (open: boolean) => {
     setIsEmulatorDialogOpen(open)
@@ -45,8 +40,7 @@ const App = () => {
     <div>
       <div className="flex flex-col text-left gap-5">
         <div className="flex gap-5 items-center">
-          <p>Select ROM</p>
-          <input type="file" onChange={onRomUpload} />
+          <RomSelect rom={rom} setRom={setRom} />
         </div>
 
         <div className="flex gap-5 items-center">
