@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from "./@/components/ui/dialog"
 import { RomSelect } from "./RomSelect"
+import { RightPanel } from "./RightPanel"
 
 const App = () => {
   const [rom, setRom] = useState<string>()
@@ -37,7 +38,7 @@ const App = () => {
   } as Settings
 
   return (
-    <div>
+    <div className="flex flex-row">
       <div className="flex flex-col text-left gap-5">
         <div className="flex gap-5 items-center">
           <RomSelect rom={rom} setRom={setRom} />
@@ -87,6 +88,10 @@ const App = () => {
             </DialogContent>
           </Dialog>
         </div>
+      </div>
+
+      <div className="bg-[#ebeef500] w-full">
+        <RightPanel emuProps={emuProps} />
       </div>
     </div>
   )

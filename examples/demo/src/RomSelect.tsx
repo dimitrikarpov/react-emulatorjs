@@ -14,6 +14,11 @@ export const RomSelect: React.FunctionComponent<Props> = ({ rom, setRom }) => {
     setRom(URL.createObjectURL(file))
   }
 
+  const onClick: React.MouseEventHandler<HTMLInputElement> = (event) => {
+    event.currentTarget.value = ""
+    setRom(undefined)
+  }
+
   useEffect(() => {
     if (!rom && inputRef.current) {
       inputRef.current.value = ""
@@ -27,9 +32,7 @@ export const RomSelect: React.FunctionComponent<Props> = ({ rom, setRom }) => {
         ref={inputRef}
         type="file"
         onChange={onRomUpload}
-        onClick={(event) => {
-          event.currentTarget.value = ""
-        }}
+        onClick={onClick}
       />
     </>
   )
