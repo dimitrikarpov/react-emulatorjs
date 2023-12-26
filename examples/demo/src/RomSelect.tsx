@@ -1,12 +1,11 @@
 import { ChangeEvent, useEffect, useRef } from "react"
+import { Input } from "./@/components/ui/input"
+import { useEmuPropsContext } from "./useEmuPropsContext"
 
-type Props = {
-  rom: string | undefined
-  setRom: React.Dispatch<React.SetStateAction<string | undefined>>
-}
-
-export const RomSelect: React.FunctionComponent<Props> = ({ rom, setRom }) => {
+export const RomSelect = () => {
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const { rom, setRom } = useEmuPropsContext()
 
   const onRomUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return
@@ -27,10 +26,10 @@ export const RomSelect: React.FunctionComponent<Props> = ({ rom, setRom }) => {
 
   return (
     <>
-      <p>Select ROM</p>
-      <input
-        ref={inputRef}
+      <p>ROM</p>
+      <Input
         type="file"
+        ref={inputRef}
         onChange={onRomUpload}
         onClick={onClick}
       />

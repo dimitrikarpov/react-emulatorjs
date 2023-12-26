@@ -1,11 +1,10 @@
 import { Settings } from "react-emulatorjs"
 import { cn } from "./@/lib/utils"
+import { useEmuPropsContext } from "./useEmuPropsContext"
 
-type Props = {
-  emuProps: Settings
-}
+export const RightPanel = () => {
+  const { emuProps } = useEmuPropsContext()
 
-export const RightPanel: React.FunctionComponent<Props> = ({ emuProps }) => {
   const ejsProps = clearProps(emuProps)
 
   console.log({ ejsProps })

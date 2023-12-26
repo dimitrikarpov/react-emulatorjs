@@ -1,48 +1,51 @@
-import { EJS_core, findCoreBioses } from "react-emulatorjs"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./@/components/ui/select"
+import { findCoreBioses } from "react-emulatorjs"
 
 type Props = {
-  core: EJS_core
+  items: ReturnType<typeof findCoreBioses>
   value: string | undefined
-  onChange: React.Dispatch<React.SetStateAction<string | undefined>>
+  onChange: (value: string | undefined) => void
 }
 
 export const BiosSelect: React.FunctionComponent<Props> = ({
-  core,
-  value = "none",
+  items,
+  value,
   onChange,
 }) => {
-  const bioses = findCoreBioses(core)?.filter(({ url }) => Boolean(url))
-
-  if (!bioses || bioses.length === 0) return null
-
-  const onChangeSelect = (value: string) => {
-    onChange(value === "none" ? undefined : value)
-  }
+  if (!items) return null
 
   return (
-    <>
-      <Select onValueChange={onChangeSelect} value={value} defaultValue="none">
-        <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="select bios..." />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="none">without bios</SelectItem>
-          {bioses.map((bios) =>
-            bios.url ? (
-              <SelectItem key={bios.name} value={bios.url}>
-                {bios.name}
-              </SelectItem>
-            ) : null,
-          )}
-        </SelectContent>
-      </Select>
-    </>
+    <div className="flex flex-col flex-wrap gap-3">
+      <div>
+        <input
+          type="radio"
+          id="without-bios"
+          value={undefined}
+          onChange={() => onChange(undefined)}
+          checked={value === undefined}
+        />
+        <label htmlFor="without-bios" className="pl-3">
+          without bios
+        </label>
+      </div>
+      {items.map((bios) =>
+        bios.url ? (
+          <div key={bios.name}>
+            <input
+              type="radio"
+              id={bios.name}
+              value={bios.name}
+              onChange={() => onChange(bios.url)}
+              checked={value === bios.url}
+            />
+            <label htmlFor={bios.name} className="pl-3">
+              {bios.name}
+              <span className="text-gray-600 hover:text-gray-900 ml-5">
+                {bios.description}
+              </span>
+            </label>
+          </div>
+        ) : null,
+      )}
+    </div>
   )
 }

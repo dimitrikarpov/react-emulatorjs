@@ -473,14 +473,17 @@ export type Settings = MainOptions &
 
 export type EJS_core = Settings["EJS_core"]
 
+export type Bios = {
+  name: BiosName
+  description: string | undefined
+  url: string | undefined
+}
+
 export type Platform = {
   id: PlatformId
   name: string
   cores: CoreName[]
-  bioses?: {
-    name: BiosName
-    description: string | undefined
-  }[]
+  bioses?: Omit<Bios, "url">[]
 }
 
 export type BiosesUrls = Record<BiosName, string | undefined>

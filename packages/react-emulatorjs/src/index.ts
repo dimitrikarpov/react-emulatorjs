@@ -5,8 +5,9 @@ export type {
   PlatformId,
   CoreName,
   BiosName,
+  Bios,
 } from "./types"
 
 export { platforms } from "./platforms"
 export { defaultBiosesUrls } from "./defaultBiosesUrls"
-export { getPlatforms, findCoreBioses } from "./utils"
+export { getPlatforms, findCoreBioses, isBios } from "./utils"

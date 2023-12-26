@@ -1,6 +1,6 @@
 import { defaultBiosesUrls } from "./defaultBiosesUrls"
 import { platforms } from "./platforms"
-import { BiosesUrls, EJS_core } from "./types"
+import { Bios, BiosesUrls, EJS_core } from "./types"
 
 export const getPlatforms = (biosesUrls: BiosesUrls = defaultBiosesUrls) => {
   return platforms.map((platform) => ({
@@ -12,18 +12,35 @@ export const getPlatforms = (biosesUrls: BiosesUrls = defaultBiosesUrls) => {
   }))
 }
 
+export const isBios = (value: unknown): value is Bios => {
+  if (
+    value &&
+    typeof value === "object" &&
+    "name" in value &&
+    "descriptions" in value &&
+    "url" in value
+  )
+    return true
+
+  return false
+}
+
 export const findCoreBioses = (
   core: EJS_core,
   biosesUrls: BiosesUrls = defaultBiosesUrls,
 ) => {
   const platforms = getPlatforms(biosesUrls)
 
-  const foundAsPlatformId = platforms.find(({ id }) => id === core)
+  const foundByPlatformId = platforms.find(({ id }) => id === core)
 
-  if (foundAsPlatformId) return foundAsPlatformId.bioses
-  const foundAsPlatformCore = platforms.find(({ cores }) =>
+  if (foundByPlatformId && foundByPlatformId.bioses)
+    return foundByPlatformId.bioses
+
+  const foundByPlatformCore = platforms.find(({ cores }) =>
     // @ts-ignore
     cores.includes(core),
   )
-  return foundAsPlatformCore?.bioses
+
+  if (foundByPlatformCore && foundByPlatformCore.bioses)
+    return foundByPlatformCore.bioses
 }
