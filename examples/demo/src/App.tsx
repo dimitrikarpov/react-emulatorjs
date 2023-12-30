@@ -9,6 +9,7 @@ import { GamPatchUrlInput } from "./emuprops-builder/ejs-gamepatchurl/GamePatchU
 import { DebugSwitch } from "./emuprops-builder/ejs-debug/DebugSwitch"
 import { FullScreenSwitch } from "./emuprops-builder/ejs-fullscreenonload/FullScreenSwitch"
 import { StartOnLoadedSwitch } from "./emuprops-builder/ejs-startonloaded/StartOnLoadedSwitch"
+import { ButtonsDialog } from "./emuprops-builder/ejs-buttons/ButtonsDialog"
 
 const App = () => {
   return (
@@ -44,6 +45,10 @@ const App = () => {
 
         <div className="flex gap-5 items-center">
           <StartOnLoadedSwitch />
+        </div>
+
+        <div className="flex gap-5 items-center">
+          <ButtonsDialog />
         </div>
 
         <div>
