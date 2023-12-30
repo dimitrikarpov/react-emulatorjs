@@ -13,6 +13,8 @@ type EmuPropsContextType = {
   onEmulatorDialogToggle: (open: boolean) => void
   onPlatformChange: (platform: EJS_core) => void
   emuProps: Settings
+  loadState: string | undefined
+  setLoadState: React.Dispatch<React.SetStateAction<string | undefined>>
 }
 
 export const EmuPropsContext = createContext<EmuPropsContextType | null>(null)
@@ -28,6 +30,7 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
   const [biosUrl, setBiosUrl] = useState<string>()
   const [platform, setPlatform] = useState<EJS_core>("fceumm")
   const [isEmulatorDialogOpen, setIsEmulatorDialogOpen] = useState(false)
+  const [loadState, setLoadState] = useState<string>()
 
   const emuProps = {
     EJS_core: platform,
@@ -35,6 +38,7 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
     ...(biosUrl && { EJS_biosUrl: biosUrl }),
     EJS_pathtodata:
       "https://cdn.jsdelivr.net/gh/EmulatorJS/EmulatorJS@latest/data", // "/data"
+    ...(loadState && { EJS_loadStateURL: loadState }),
   } as Settings
 
   const onEmulatorDialogToggle = (open: boolean) => {
@@ -64,6 +68,8 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
         onEmulatorDialogToggle,
         onPlatformChange,
         emuProps,
+        loadState,
+        setLoadState,
       }}
     >
       {children}
