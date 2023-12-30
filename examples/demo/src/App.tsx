@@ -7,6 +7,8 @@ import { EmulatorDialog } from "./EmulatorDialog"
 import { LoadStateInput } from "./emuprops-builder/ejs-loadstateurl/LoadStateInput"
 import { GamPatchUrlInput } from "./emuprops-builder/ejs-gamepatchurl/GamePatchUrlInput"
 import { DebugSwitch } from "./emuprops-builder/ejs-debug/DebugSwitch"
+import { FullScreenSwitch } from "./emuprops-builder/ejs-fullscreenonload/FullScreenSwitch"
+import { StartOnLoadedSwitch } from "./emuprops-builder/ejs-startonloaded/StartOnLoadedSwitch"
 
 const App = () => {
   return (
@@ -36,6 +38,14 @@ const App = () => {
           <DebugSwitch />
         </div>
 
+        <div className="flex gap-5 items-center">
+          <FullScreenSwitch />
+        </div>
+
+        <div className="flex gap-5 items-center">
+          <StartOnLoadedSwitch />
+        </div>
+
         <div>
           <EmulatorDialog />
         </div>
@@ -55,8 +65,8 @@ export default App
 [X] EJS_loadStateURL
 [?] EJS_gamePatchUrl
 [X] EJS_DEBUG_XX
-EJS_fullscreenOnLoad
-EJS_startOnLoaded
+[?] EJS_fullscreenOnLoad
+[X] EJS_startOnLoaded
 ----
 EJS_volume
 EJS_Buttons

@@ -19,6 +19,10 @@ type EmuPropsContextType = {
   setGamePatchUrl: React.Dispatch<React.SetStateAction<string | undefined>>
   debug: boolean
   setDebug: React.Dispatch<React.SetStateAction<boolean>>
+  fullscreenOnLoad: boolean
+  setFullscreenOnLoad: React.Dispatch<React.SetStateAction<boolean>>
+  startOnLoaded: boolean
+  setStartOnLoaded: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const EmuPropsContext = createContext<EmuPropsContextType | null>(null)
@@ -37,6 +41,8 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
   const [loadState, setLoadState] = useState<string>()
   const [gamePatchUrl, setGamePatchUrl] = useState<string>()
   const [debug, setDebug] = useState(false)
+  const [fullscreenOnLoad, setFullscreenOnLoad] = useState(false)
+  const [startOnLoaded, setStartOnLoaded] = useState(false)
 
   const emuProps = {
     EJS_core: platform,
@@ -47,6 +53,8 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
     ...(loadState && { EJS_loadStateURL: loadState }),
     ...(gamePatchUrl && { EJS_gamePatchUrl: gamePatchUrl }),
     ...(debug && { EJS_DEBUG_XX: true }),
+    ...(fullscreenOnLoad && { EJS_fullscreenOnLoad: true }),
+    ...(startOnLoaded && { EJS_startOnLoaded: true }),
   } as Settings
 
   const onEmulatorDialogToggle = (open: boolean) => {
@@ -82,6 +90,10 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
         setGamePatchUrl,
         debug,
         setDebug,
+        fullscreenOnLoad,
+        setFullscreenOnLoad,
+        startOnLoaded,
+        setStartOnLoaded,
       }}
     >
       {children}
