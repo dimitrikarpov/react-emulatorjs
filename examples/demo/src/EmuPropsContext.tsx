@@ -15,6 +15,10 @@ type EmuPropsContextType = {
   emuProps: Settings
   loadState: string | undefined
   setLoadState: React.Dispatch<React.SetStateAction<string | undefined>>
+  gamePatchUrl: string | undefined
+  setGamePatchUrl: React.Dispatch<React.SetStateAction<string | undefined>>
+  debug: boolean
+  setDebug: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const EmuPropsContext = createContext<EmuPropsContextType | null>(null)
@@ -31,14 +35,18 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
   const [platform, setPlatform] = useState<EJS_core>("fceumm")
   const [isEmulatorDialogOpen, setIsEmulatorDialogOpen] = useState(false)
   const [loadState, setLoadState] = useState<string>()
+  const [gamePatchUrl, setGamePatchUrl] = useState<string>()
+  const [debug, setDebug] = useState(false)
 
   const emuProps = {
     EJS_core: platform,
     EJS_gameUrl: rom!,
-    ...(biosUrl && { EJS_biosUrl: biosUrl }),
     EJS_pathtodata:
       "https://cdn.jsdelivr.net/gh/EmulatorJS/EmulatorJS@latest/data", // "/data"
+    ...(biosUrl && { EJS_biosUrl: biosUrl }),
     ...(loadState && { EJS_loadStateURL: loadState }),
+    ...(gamePatchUrl && { EJS_gamePatchUrl: gamePatchUrl }),
+    ...(debug && { EJS_DEBUG_XX: true }),
   } as Settings
 
   const onEmulatorDialogToggle = (open: boolean) => {
@@ -70,6 +78,10 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
         emuProps,
         loadState,
         setLoadState,
+        gamePatchUrl,
+        setGamePatchUrl,
+        debug,
+        setDebug,
       }}
     >
       {children}

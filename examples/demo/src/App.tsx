@@ -5,6 +5,8 @@ import { CoreSelectDialog } from "./CoreSelectDialog"
 import { BiosSelectDialog } from "./BiosSelectDialog"
 import { EmulatorDialog } from "./EmulatorDialog"
 import { LoadStateInput } from "./emuprops-builder/ejs-loadstateurl/LoadStateInput"
+import { GamPatchUrlInput } from "./emuprops-builder/ejs-gamepatchurl/GamePatchUrlInput"
+import { DebugSwitch } from "./emuprops-builder/ejs-debug/DebugSwitch"
 
 const App = () => {
   return (
@@ -26,6 +28,14 @@ const App = () => {
           <LoadStateInput />
         </div>
 
+        <div className="flex gap-5 items-center">
+          <GamPatchUrlInput />
+        </div>
+
+        <div className="flex gap-5 items-center">
+          <DebugSwitch />
+        </div>
+
         <div>
           <EmulatorDialog />
         </div>
@@ -43,8 +53,8 @@ export default App
 /*
 
 [X] EJS_loadStateURL
-EJS_gamePatchUrl
-EJS_DEBUG_XX
+[?] EJS_gamePatchUrl
+[X] EJS_DEBUG_XX
 EJS_fullscreenOnLoad
 EJS_startOnLoaded
 ----
