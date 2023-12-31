@@ -10,6 +10,15 @@ export const defaultButtons: EJS_Buttons = {
   gamepad: true,
   cheat: true,
   cacheManager: true,
+  saveSavFiles: true,
+  loadSavFiles: true,
+  mute: true,
+  volume: true,
+  settings: true,
+  fullscreen: true,
+  screenshot: true,
+  quickSave: true,
+  quickLoad: true,
 }
 
 export const isButtonsInDefaultState = (buttons: EJS_Buttons) => {

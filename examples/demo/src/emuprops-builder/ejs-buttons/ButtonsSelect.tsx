@@ -1,15 +1,11 @@
-import { useState } from "react"
 import { Switch } from "../../@/components/ui/switch"
 import { Label } from "../../@/components/ui/label"
 import { Button } from "../../@/components/ui/button"
-import {
-  type EJS_Buttons,
-  defaultButtons,
-  isButtonsInDefaultState,
-} from "../../@/lib/buttons"
+import { defaultButtons, isButtonsInDefaultState } from "../../@/lib/buttons"
+import { useEmuPropsContext } from "../../useEmuPropsContext"
 
 export const ButtonsSelect = () => {
-  const [buttons, setButtons] = useState<EJS_Buttons>(defaultButtons)
+  const { buttons, setButtons } = useEmuPropsContext()
 
   const onCheckedChange = (button: string, checked: boolean) => {
     setButtons((prev) => ({ ...prev, [button]: checked }))
@@ -23,16 +19,18 @@ export const ButtonsSelect = () => {
 
   return (
     <>
-      {Object.entries(buttons).map(([button, checked]) => (
-        <div className="flex items-center space-x-2" key={button}>
-          <Switch
-            id={button}
-            checked={checked}
-            onCheckedChange={(checked) => onCheckedChange(button, checked)}
-          />
-          <Label htmlFor={button}>{button}</Label>
-        </div>
-      ))}
+      <div className="grid grid-cols-4 gap-y-4">
+        {Object.entries(buttons).map(([button, checked]) => (
+          <div key={button} className="flex items-center space-x-3">
+            <Switch
+              id={button}
+              checked={checked}
+              onCheckedChange={(checked) => onCheckedChange(button, checked)}
+            />
+            <Label htmlFor={button}>{button}</Label>
+          </div>
+        ))}
+      </div>
 
       <Button onClick={onReset} disabled={equalsDefault} variant={"outline"}>
         Reset to defaults
@@ -40,34 +38,3 @@ export const ButtonsSelect = () => {
     </>
   )
 }
-
-/*
-
-  EJS_Buttons?: {
-    restart?: boolean
-    playPause?: boolean
-    saveState?: boolean
-    loadState?: boolean
-    gamepad?: boolean
-    cheat?: boolean
-    cacheManager?: boolean
-
-
-
-
-    mute?: boolean
-    volume?: boolean
-    settings?: boolean
-    fullscreen?: boolean
-
-    saveSavFiles?: boolean
-    loadSavFiles?: boolean
-
-    quickSave?: boolean
-    quickLoad?: boolean
-    ----------------------
-    screenRecord?: boolean
-    screenshot?: boolean
-  }
-
-*/
