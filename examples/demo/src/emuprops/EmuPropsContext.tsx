@@ -1,6 +1,10 @@
 import { createContext, useState } from "react"
 import { EJS_core, Settings } from "react-emulatorjs"
-import { type EJS_Buttons, defaultButtons } from "./@/lib/buttons"
+import {
+  type EJS_Buttons,
+  defaultButtons,
+  isButtonsInDefaultState,
+} from "../@/lib/buttons"
 
 type EmuPropsContextType = {
   rom: string | undefined
@@ -59,7 +63,7 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
     ...(debug && { EJS_DEBUG_XX: true }),
     ...(fullscreenOnLoad && { EJS_fullscreenOnLoad: true }),
     ...(startOnLoaded && { EJS_startOnLoaded: true }),
-    EJS_Buttons: buttons,
+    ...(!isButtonsInDefaultState(buttons) && { EJS_Buttons: buttons }),
   } as Settings
 
   const onEmulatorDialogToggle = (open: boolean) => {

@@ -6,10 +6,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./@/components/ui/dialog"
-import { Button } from "./@/components/ui/button"
+} from "../../@/components/ui/dialog"
+import { Button } from "../../@/components/ui/button"
 import { BiosSelect } from "./BiosSelect"
-import { useEmuPropsContext } from "./useEmuPropsContext"
+import { useEmuPropsContext } from "../useEmuPropsContext"
 import { findCoreBioses } from "react-emulatorjs"
 
 export const BiosSelectDialog = () => {

@@ -1,4 +1,4 @@
-import { EJS_Buttons, isButtonsInDefaultState } from "../@/lib/buttons"
+import { EJS_Buttons, isButtonsInDefaultState } from "../../@/lib/buttons"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 import { PropItemProps } from "./types"
 

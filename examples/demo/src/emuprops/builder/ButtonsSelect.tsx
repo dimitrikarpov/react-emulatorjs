@@ -2,7 +2,7 @@ import { Switch } from "../../@/components/ui/switch"
 import { Label } from "../../@/components/ui/label"
 import { Button } from "../../@/components/ui/button"
 import { defaultButtons, isButtonsInDefaultState } from "../../@/lib/buttons"
-import { useEmuPropsContext } from "../../useEmuPropsContext"
+import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const ButtonsSelect = () => {
   const { buttons, setButtons } = useEmuPropsContext()

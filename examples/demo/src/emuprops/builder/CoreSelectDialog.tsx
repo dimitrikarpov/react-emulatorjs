@@ -6,11 +6,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./@/components/ui/dialog"
-import { Button } from "./@/components/ui/button"
+} from "../../@/components/ui/dialog"
+import { Button } from "../../@/components/ui/button"
 import { CoreSelect } from "./CoreSelect"
 import { useState } from "react"
-import { useEmuPropsContext } from "./useEmuPropsContext"
+import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const CoreSelectDialog = () => {
   const { platform, onPlatformChange } = useEmuPropsContext()

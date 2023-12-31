@@ -1,6 +1,6 @@
 import { Label } from "../../@/components/ui/label"
 import { Switch } from "../../@/components/ui/switch"
-import { useEmuPropsContext } from "../../useEmuPropsContext"
+import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const DebugSwitch = () => {
   const { debug: value, setDebug: onCheckedChange } = useEmuPropsContext()

@@ -1,11 +1,11 @@
 import { ChangeEvent, useEffect, useRef } from "react"
-import { useEmuPropsContext } from "../../useEmuPropsContext"
+import { useEmuPropsContext } from "../useEmuPropsContext"
 import { Input } from "../../@/components/ui/input"
 
-export const GamPatchUrlInput = () => {
+export const LoadStateInput = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { gamePatchUrl: file, setGamePatchUrl: setFile } = useEmuPropsContext()
+  const { loadState: file, setLoadState: setFile } = useEmuPropsContext()
 
   const onFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return
@@ -26,7 +26,7 @@ export const GamPatchUrlInput = () => {
 
   return (
     <>
-      <p>PATCH</p>
+      <p>SAVE</p>
       <Input
         type="file"
         ref={inputRef}
