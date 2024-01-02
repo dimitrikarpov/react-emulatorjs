@@ -6,7 +6,7 @@ export const Viewer = () => {
   const { emuProps } = useEmuPropsContext()
 
   return (
-    <div className="bg-[#ebeef500] w-full">
+    <div className="bg-[#ebeef500] w-full shadow-lg rounded p-3 overflow-x-auto">
       <div className="text-left">
         <div className="text-[#8458fe]">&lt;EmulatorJS</div>
         {Object.entries(emuProps).map(([key, value]) => (

@@ -22,7 +22,7 @@ export const CoreSelectDialog = () => {
   }
 
   return (
-    <>
+    <div className="flex gap-5 items-center">
       <p>CORE</p>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -40,6 +40,6 @@ export const CoreSelectDialog = () => {
       </Dialog>
 
       {platform}
-    </>
+    </div>
   )
 }

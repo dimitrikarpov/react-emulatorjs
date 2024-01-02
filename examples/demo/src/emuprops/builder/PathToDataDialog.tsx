@@ -21,7 +21,7 @@ export const PathToDataDialog = () => {
   }
 
   return (
-    <>
+    <div className="flex gap-5 items-center">
       <p>DATA</p>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -41,6 +41,6 @@ export const PathToDataDialog = () => {
       <p className="w-52 text-ellipsis overflow-hidden" title={pathToData}>
         {pathToData}
       </p>
-    </>
+    </div>
   )
 }

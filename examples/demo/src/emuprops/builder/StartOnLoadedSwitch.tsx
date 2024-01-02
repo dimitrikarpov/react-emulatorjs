@@ -8,7 +8,9 @@ export const StartOnLoadedSwitch = () => {
 
   return (
     <div className="flex items-center space-x-2">
-      <Label htmlFor="fullscrn">Start on loaded</Label>
+      <Label className="pr-[17px]" htmlFor="fullscrn">
+        Start on loaded
+      </Label>
       <Switch id="fullscrn" checked={value} onCheckedChange={onCheckedChange} />
     </div>
   )

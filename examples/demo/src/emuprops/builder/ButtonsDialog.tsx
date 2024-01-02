@@ -14,7 +14,7 @@ export const ButtonsDialog = () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <>
+    <div className="flex gap-5 items-center">
       <p>UI</p>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -30,6 +30,6 @@ export const ButtonsDialog = () => {
           <ButtonsSelect />
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   )
 }

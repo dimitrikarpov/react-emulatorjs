@@ -25,7 +25,7 @@ export const LoadStateInput = () => {
   }, [file])
 
   return (
-    <>
+    <div className="flex gap-5 items-center">
       <p>SAVE</p>
       <Input
         type="file"
@@ -33,6 +33,6 @@ export const LoadStateInput = () => {
         onChange={onFileSelect}
         onClick={onClick}
       />
-    </>
+    </div>
   )
 }

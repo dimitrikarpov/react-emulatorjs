@@ -25,7 +25,7 @@ export const GamPatchUrlInput = () => {
   }, [file])
 
   return (
-    <>
+    <div className="flex gap-5 items-center">
       <p>PATCH</p>
       <Input
         type="file"
@@ -33,6 +33,6 @@ export const GamPatchUrlInput = () => {
         onChange={onFileSelect}
         onClick={onClick}
       />
-    </>
+    </div>
   )
 }

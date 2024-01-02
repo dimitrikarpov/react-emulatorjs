@@ -24,7 +24,7 @@ export const BiosSelectDialog = () => {
   }
 
   return (
-    <>
+    <div className="flex gap-5 items-center">
       <p>BIOS</p>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -44,6 +44,6 @@ export const BiosSelectDialog = () => {
       </Dialog>
 
       {biosUrl ? biosUrl.split("/").at(-1) : "without bios"}
-    </>
+    </div>
   )
 }

@@ -25,7 +25,7 @@ export const RomSelect = () => {
   }, [file])
 
   return (
-    <>
+    <div className="flex gap-5 items-center">
       <p>ROM</p>
       <Input
         type="file"
@@ -33,6 +33,6 @@ export const RomSelect = () => {
         onChange={onFileSelect}
         onClick={onClick}
       />
-    </>
+    </div>
   )
 }
