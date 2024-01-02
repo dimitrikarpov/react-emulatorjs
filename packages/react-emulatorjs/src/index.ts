@@ -10,4 +10,5 @@ export type {
 
 export { platforms } from "./platforms"
 export { defaultBiosesUrls } from "./defaultBiosesUrls"
+export { defaultPathToData } from "./defaultPathToData"
 export { getPlatforms, findCoreBioses, isBios } from "./utils"

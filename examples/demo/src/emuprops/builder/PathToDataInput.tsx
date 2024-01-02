@@ -1,4 +1,4 @@
-import { pathToDataLinks } from "../../@/lib/path-to-data"
+import { defaultPathToData } from "react-emulatorjs"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 
 type Props = {
@@ -12,7 +12,7 @@ export const PathToDataInput: React.FunctionComponent<Props> = ({
 
   return (
     <div className="flex flex-col flex-wrap gap-3">
-      {pathToDataLinks.map((path) => (
+      {[defaultPathToData, "/data"].map((path) => (
         <div key={path}>
           <input
             type="radio"

@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useRef } from "react"
 import { buildEmulator } from "./buildEmulator"
 import { Settings } from "./types"
+import { defaultPathToData } from "./defaultPathToData"
 
 type Props = Settings
 
 export const Emulator: React.FunctionComponent<Props> = (props) => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
-
-  console.log({ props })
 
   const setIframeGlobals = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -16,6 +15,8 @@ export const Emulator: React.FunctionComponent<Props> = (props) => {
 
     // @ts-ignore
     iframeGlobal.EJS_player = "#game"
+
+    if (!props.EJS_pathtodata) iframeGlobal.EJS_pathtodata = defaultPathToData
 
     for (const key in props) {
       // @ts-ignore
@@ -40,7 +41,7 @@ export const Emulator: React.FunctionComponent<Props> = (props) => {
   }, [setIframeGlobals])
 
   const html = buildEmulator({
-    loader: `${props.EJS_pathtodata}/loader.js`,
+    loader: `${props.EJS_pathtodata || defaultPathToData}/loader.js`,
   }).innerHTML
 
   return (
