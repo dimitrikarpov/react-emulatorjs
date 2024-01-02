@@ -5,6 +5,7 @@ import {
   defaultButtons,
   isButtonsInDefaultState,
 } from "../@/lib/buttons"
+import { pathToDataLinks } from "../@/lib/path-to-data"
 
 type EmuPropsContextType = {
   rom: string | undefined
@@ -30,6 +31,8 @@ type EmuPropsContextType = {
   setStartOnLoaded: React.Dispatch<React.SetStateAction<boolean>>
   buttons: EJS_Buttons
   setButtons: React.Dispatch<React.SetStateAction<EJS_Buttons>>
+  pathToData: string
+  setPathToData: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const EmuPropsContext = createContext<EmuPropsContextType | null>(null)
@@ -51,6 +54,7 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
   const [fullscreenOnLoad, setFullscreenOnLoad] = useState(false)
   const [startOnLoaded, setStartOnLoaded] = useState(false)
   const [buttons, setButtons] = useState<EJS_Buttons>(defaultButtons)
+  const [pathToData, setPathToData] = useState<string>(pathToDataLinks[0])
 
   const emuProps = {
     EJS_core: platform,
@@ -105,6 +109,8 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
         setStartOnLoaded,
         buttons,
         setButtons,
+        pathToData,
+        setPathToData,
       }}
     >
       {children}

@@ -8,6 +8,7 @@ import { GamPatchUrlInput } from "./GamePatchUrlInput"
 import { LoadStateInput } from "./LoadStateInput"
 import { RomSelect } from "./RomSelect"
 import { StartOnLoadedSwitch } from "./StartOnLoadedSwitch"
+import { PathToDataDialog } from "./pathToDataDialog"
 
 export const Builder = () => {
   return (
@@ -46,6 +47,10 @@ export const Builder = () => {
 
       <div className="flex gap-5 items-center">
         <ButtonsDialog />
+      </div>
+
+      <div className="flex gap-5 items-center">
+        <PathToDataDialog />
       </div>
 
       <div>
