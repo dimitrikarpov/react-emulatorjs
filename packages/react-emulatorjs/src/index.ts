@@ -1,4 +1,4 @@
-export { Emulator } from "./Emulator"
+export { EmulatorJS } from "./EmulatorJS"
 export type {
   Settings,
   EJS_core,

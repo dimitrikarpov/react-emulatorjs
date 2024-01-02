@@ -8,7 +8,7 @@ import { GamPatchUrlInput } from "./GamePatchUrlInput"
 import { LoadStateInput } from "./LoadStateInput"
 import { RomSelect } from "./RomSelect"
 import { StartOnLoadedSwitch } from "./StartOnLoadedSwitch"
-import { PathToDataDialog } from "./pathToDataDialog"
+import { PathToDataDialog } from "./PathToDataDialog"
 
 export const Builder = () => {
   return (

@@ -38,7 +38,9 @@ export const PathToDataDialog = () => {
         </DialogContent>
       </Dialog>
 
-      <p className="w-52 text-ellipsis overflow-hidden">{pathToData}</p>
+      <p className="w-52 text-ellipsis overflow-hidden" title={pathToData}>
+        {pathToData}
+      </p>
     </>
   )
 }

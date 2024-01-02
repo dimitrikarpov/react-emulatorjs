@@ -5,7 +5,7 @@ import { defaultPathToData } from "./defaultPathToData"
 
 type Props = Settings
 
-export const Emulator: React.FunctionComponent<Props> = (props) => {
+export const EmulatorJS: React.FunctionComponent<Props> = (props) => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const setIframeGlobals = useCallback(() => {

@@ -1,4 +1,4 @@
-import { Emulator } from "react-emulatorjs"
+import { EmulatorJS } from "react-emulatorjs"
 import { Button } from "../../@/components/ui/button"
 import {
   Dialog,
@@ -29,7 +29,7 @@ export const EmulatorDialog = () => {
         <DialogHeader>
           <DialogTitle></DialogTitle>
         </DialogHeader>
-        {isEmulatorDialogOpen && <Emulator {...emuProps} />}
+        {isEmulatorDialogOpen && <EmulatorJS {...emuProps} />}
       </DialogContent>
     </Dialog>
   )

@@ -8,7 +8,7 @@ export const Viewer = () => {
   return (
     <div className="bg-[#ebeef500] w-full">
       <div className="text-left">
-        <div className="text-[#8458fe]">&lt;Emulator</div>
+        <div className="text-[#8458fe]">&lt;EmulatorJS</div>
         {Object.entries(emuProps).map(([key, value]) => (
           <PropItem key={key} name={key as keyof Settings} value={value} />
         ))}
