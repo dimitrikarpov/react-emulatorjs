@@ -4,7 +4,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "publish-packages": "turbo run build lint && changeset version && changeset publish"
   },
   "devDependencies": {
     "eslint": "^8.48.0",
@@ -17,5 +18,8 @@
   "workspaces": [
     "packages/*",
     "examples/*"
-  ]
+  ],
+  "dependencies": {
+    "@changesets/cli": "^2.27.1"
+  }
 }

@@ -1,7 +1,28 @@
 {
   "name": "react-emulatorjs",
   "version": "1.0.0",
-  "description": "",
+  "description": "React wrapper for emulatorjs",
+  "author": "Dimitri Karpov <karpov.dimon@gmail.com>",
+  "license": "ISC",
+  "keywords": [
+    "react",
+    "retroarch",
+    "emulator",
+    "emulatorjs",
+    "nintendo",
+    "nes",
+    "sega",
+    "snes",
+    "playstation",
+    "gameboy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dimitrikarpov/react-emulatorjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -10,9 +31,6 @@
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
