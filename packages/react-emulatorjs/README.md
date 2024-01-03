@@ -83,3 +83,16 @@ function App() {
 And thats all! Now You can run `nes` roms in browser.
 
 Checkout codesandbox [demo](https://codesandbox.io/p/sandbox/react-emulatorjs-3rm8c3) with this code.
+
+### using locally installed cores
+
+The most important option is `EJS_pathtodata`. This path points to emulatorjs's binaries. And the best performance option is keep whem close as possible, on Your sever. And it is very easy.
+
+- Just download `data` folder from [emulatorjs repository](https://github.com/EmulatorJS/EmulatorJS/tree/main/data) and copy in to Your `public` folder. For example, if You are using 'vite' data folder should be in `/public/data` folder.
+- Update prop with new path
+  ```typescript
+  <EmulatorJS
+      //...
+      EJS_pathtodata="/data"
+  />
+  ```
