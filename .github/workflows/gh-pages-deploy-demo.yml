@@ -45,8 +45,8 @@ jobs:
           pwd
           ls -lah
           ls -lah node_modules
-          npm run build:ghpages
-        working-directory: ./examples/playground
+          npm run build
+        # working-directory: ./examples/playground
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
