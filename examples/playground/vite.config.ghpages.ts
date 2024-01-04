@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url)
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/react-emulatorjs",
+  // base: "/react-emulatorjs",
   plugins: [react()],
 
   resolve: {
