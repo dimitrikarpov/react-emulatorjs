@@ -19,10 +19,10 @@ export default defineConfig({
         find: "@",
         replacement: path.resolve(__dirname, "./src"),
       },
-      {
-        find: "react-emulatorjs",
-        replacement: require.resolve("react-emulatorjs"),
-      },
+      // {
+      //   find: "react-emulatorjs",
+      //   replacement: require.resolve("react-emulatorjs"),
+      // },
     ],
   },
 })
