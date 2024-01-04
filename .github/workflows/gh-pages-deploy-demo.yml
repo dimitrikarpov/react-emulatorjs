@@ -39,7 +39,7 @@ jobs:
         run: |
           pwd
           npm install
-        working-directory: ./examples/playground
+        # working-directory: ./examples/playground
       - name: Build
         run: |
           pwd
