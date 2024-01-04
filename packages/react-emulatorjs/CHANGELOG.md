@@ -1,5 +1,11 @@
 # react-emulatorjs
 
+## 2.1.1
+
+### Patch Changes
+
+- update README
+
 ## 2.1.0
 
 ### Minor Changes
