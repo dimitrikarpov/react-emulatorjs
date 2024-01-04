@@ -44,6 +44,7 @@ jobs:
         run: |
           pwd
           ls -lah
+          ls- lah node_modules/react-emulatorjs/dist
           npm run build:ghpages
         working-directory: ./examples/playground
       - name: Setup Pages
