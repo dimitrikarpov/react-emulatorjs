@@ -1,6 +1,21 @@
-# react-emulatorjs
+<p align="center">
+  <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png">
+  <img src="docs/logo-light.png" width="480" height="180" alt="Logo">
+</picture>
+</p>
 
-Thing to integrate powerfull [emulatorjs](https://emulatorjs.org/) in to Your React project
+<p align="center">
+  A thing for playing retro games
+</p>
+
+<div align="center">
+  <a href="https://dimitrikarpov.github.io/react-emulatorjs/">Playground</a> | <a href="https://tsdocs.dev/docs/react-emulatorjs/2.1.0/types/Settings.html">Settings API</a> 
+</div>
+
+# react-emulatorjs 🕹️
+
+Integrate powerfull [emulatorjs](https://emulatorjs.org/) in to Your React project
 
 ### what is emulatorjs
 
@@ -10,7 +25,7 @@ Emulatorjs is a js library to configure and run retro games in web version of [r
 
 `react-emulatorjs` is a easiest way to use emulatorjs in React with full typescript support including all emulatorjs options.
 
-## quick start
+## ⚡ quick start
 
 Install react-emulatorjs
 
@@ -84,7 +99,7 @@ And thats all! Now You can run `nes` roms in browser.
 
 Checkout codesandbox [demo](https://codesandbox.io/p/sandbox/react-emulatorjs-3rm8c3) with this code.
 
-### using locally installed cores
+### 📎 using locally installed cores
 
 The most important option is `EJS_pathtodata`. This path points to emulatorjs's binaries. And the best performance option is keep whem close as possible, on Your sever. And it is very easy.
 
@@ -96,3 +111,7 @@ The most important option is `EJS_pathtodata`. This path points to emulatorjs's 
       EJS_pathtodata="/data"
   />
   ```
+
+## Links
+
+- [playground source code](https://github.com/dimitrikarpov/react-emulatorjs/tree/main/examples/playground)
