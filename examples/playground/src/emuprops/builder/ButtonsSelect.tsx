@@ -5,14 +5,14 @@ import { defaultButtons, isButtonsInDefaultState } from "../../@/lib/buttons"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const ButtonsSelect = () => {
-  const { buttons, setButtons } = useEmuPropsContext()
+  const { buttons, dispatch } = useEmuPropsContext()
 
   const onCheckedChange = (button: string, checked: boolean) => {
-    setButtons((prev) => ({ ...prev, [button]: checked }))
+    dispatch({ type: "setButtons", payload: { ...buttons, [button]: checked } })
   }
 
   const onReset = () => {
-    setButtons(defaultButtons)
+    dispatch({ type: "setButtons", payload: defaultButtons })
   }
 
   const equalsDefault = isButtonsInDefaultState(buttons)
