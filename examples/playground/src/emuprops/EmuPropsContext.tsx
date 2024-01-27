@@ -1,5 +1,5 @@
 import { createContext, useReducer, useState } from "react"
-import { EJS_core, Settings } from "react-emulatorjs"
+import { EJS_core, Settings, defaultPathToData } from "react-emulatorjs"
 import {
   type EJS_Buttons,
   defaultButtons,
@@ -125,8 +125,7 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
   const emuProps = {
     EJS_core: platform,
     EJS_gameUrl: rom!,
-    EJS_pathtodata:
-      "https://cdn.jsdelivr.net/gh/EmulatorJS/EmulatorJS@latest/data", // "/data"
+    EJS_pathtodata: pathToData || defaultPathToData,
     ...(biosUrl && { EJS_biosUrl: biosUrl }),
     ...(loadState && { EJS_loadStateURL: loadState }),
     ...(gamePatchUrl && { EJS_gamePatchUrl: gamePatchUrl }),
