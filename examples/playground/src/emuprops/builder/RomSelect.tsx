@@ -5,7 +5,11 @@ import { useEmuPropsContext } from "../useEmuPropsContext"
 export const RomSelect = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { rom: file, setRom: setFile } = useEmuPropsContext()
+  const { rom: file, dispatch } = useEmuPropsContext()
+
+  const setFile = (file: string | undefined) => {
+    dispatch({ type: "setRom", payload: file })
+  }
 
   const onFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return

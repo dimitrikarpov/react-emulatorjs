@@ -3,8 +3,11 @@ import { Switch } from "../../@/components/ui/switch"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const FullScreenSwitch = () => {
-  const { fullscreenOnLoad: value, setFullscreenOnLoad: onCheckedChange } =
-    useEmuPropsContext()
+  const { fullscreenOnLoad: value, dispatch } = useEmuPropsContext()
+
+  const onCheckedChange = (checked: boolean) => {
+    dispatch({ type: "setFullscreenOnLoad", payload: checked })
+  }
 
   return (
     <div className="flex items-center space-x-2">

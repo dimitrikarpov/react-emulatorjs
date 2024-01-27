@@ -5,7 +5,11 @@ import { Input } from "../../@/components/ui/input"
 export const LoadStateInput = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { loadState: file, setLoadState: setFile } = useEmuPropsContext()
+  const { loadState: file, dispatch } = useEmuPropsContext()
+
+  const setFile = (file: string | undefined) => {
+    dispatch({ type: "setLoadState", payload: file })
+  }
 
   const onFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.[0]) return

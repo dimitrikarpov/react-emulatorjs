@@ -3,8 +3,11 @@ import { Switch } from "../../@/components/ui/switch"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const StartOnLoadedSwitch = () => {
-  const { startOnLoaded: value, setStartOnLoaded: onCheckedChange } =
-    useEmuPropsContext()
+  const { startOnLoaded: value, dispatch } = useEmuPropsContext()
+
+  const onCheckedChange = (checked: boolean) => {
+    dispatch({ type: "setStartOnLoaded", payload: checked })
+  }
 
   return (
     <div className="flex items-center space-x-2">

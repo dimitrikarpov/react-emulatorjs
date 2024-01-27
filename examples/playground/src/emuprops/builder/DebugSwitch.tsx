@@ -3,7 +3,11 @@ import { Switch } from "../../@/components/ui/switch"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const DebugSwitch = () => {
-  const { debug: value, setDebug: onCheckedChange } = useEmuPropsContext()
+  const { debug: value, dispatch } = useEmuPropsContext()
+
+  const onCheckedChange = (checked: boolean) => {
+    dispatch({ type: "setDebug", payload: checked })
+  }
 
   return (
     <div className="flex items-center space-x-2">

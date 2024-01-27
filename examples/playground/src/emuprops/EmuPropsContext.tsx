@@ -1,5 +1,5 @@
-import { createContext, useState } from "react"
-import { EJS_core, Settings } from "react-emulatorjs"
+import { createContext, useReducer, useState } from "react"
+import { EJS_core, Settings, defaultPathToData } from "react-emulatorjs"
 import {
   type EJS_Buttons,
   defaultButtons,
@@ -7,32 +7,92 @@ import {
 } from "../@/lib/buttons"
 import { pathToDataLinks } from "../@/lib/path-to-data"
 
+type emuPropsReducerState = {
+  rom: string | undefined
+  biosUrl: string | undefined
+  platform: EJS_core
+  gamePatchUrl: string | undefined
+  loadState: string | undefined
+  debug: boolean
+  fullscreenOnLoad: boolean
+  startOnLoaded: boolean
+  buttons: EJS_Buttons
+  pathToData: string
+}
+
+type emuPropsReducerAction =
+  | { type: "setRom"; payload: string | undefined }
+  | { type: "setBiosUrl"; payload: string | undefined }
+  | { type: "setPlatform"; payload: EJS_core }
+  | { type: "setGamePatchUrl"; payload: string | undefined }
+  | { type: "setLoadState"; payload: string | undefined }
+  | { type: "setDebug"; payload: boolean }
+  | { type: "setFullscreenOnLoad"; payload: boolean }
+  | { type: "setStartOnLoaded"; payload: boolean }
+  | { type: "setButtons"; payload: EJS_Buttons }
+  | { type: "setPathToData"; payload: string }
+
+const emuPropsReducerInitialState: emuPropsReducerState = {
+  rom: undefined,
+  biosUrl: undefined,
+  platform: "fceumm",
+  gamePatchUrl: undefined,
+  loadState: undefined,
+  debug: false,
+  fullscreenOnLoad: false,
+  startOnLoaded: false,
+  buttons: defaultButtons,
+  pathToData: pathToDataLinks[0],
+}
+
+const emuPropsReducer = (
+  state: emuPropsReducerState,
+  action: emuPropsReducerAction,
+) => {
+  switch (action.type) {
+    case "setRom":
+      return { ...state, rom: action.payload }
+    case "setBiosUrl":
+      return { ...state, biosUrl: action.payload }
+    case "setPlatform":
+      return { ...state, platform: action.payload }
+    case "setGamePatchUrl":
+      return { ...state, gamePatchUrl: action.payload }
+    case "setLoadState":
+      return { ...state, loadState: action.payload }
+    case "setDebug":
+      return { ...state, debug: action.payload }
+    case "setFullscreenOnLoad":
+      return { ...state, fullscreenOnLoad: action.payload }
+    case "setStartOnLoaded":
+      return { ...state, startOnLoaded: action.payload }
+    case "setButtons":
+      return { ...state, buttons: action.payload }
+    case "setPathToData":
+      return { ...state, pathToData: action.payload }
+    default:
+      return state
+  }
+}
+
 type EmuPropsContextType = {
   rom: string | undefined
-  setRom: React.Dispatch<React.SetStateAction<string | undefined>>
   biosUrl: string | undefined
-  setBiosUrl: React.Dispatch<React.SetStateAction<string | undefined>>
   platform: EJS_core
-  setPlatform: React.Dispatch<React.SetStateAction<EJS_core>>
+  gamePatchUrl: string | undefined
+  loadState: string | undefined
+  debug: boolean
+  fullscreenOnLoad: boolean
+  startOnLoaded: boolean
+  buttons: EJS_Buttons
+  pathToData: string
+  dispatch: React.Dispatch<emuPropsReducerAction>
+
+  emuProps: Settings
   isEmulatorDialogOpen: boolean
   setIsEmulatorDialogOpen: React.Dispatch<React.SetStateAction<boolean>>
   onEmulatorDialogToggle: (open: boolean) => void
   onPlatformChange: (platform: EJS_core) => void
-  emuProps: Settings
-  loadState: string | undefined
-  setLoadState: React.Dispatch<React.SetStateAction<string | undefined>>
-  gamePatchUrl: string | undefined
-  setGamePatchUrl: React.Dispatch<React.SetStateAction<string | undefined>>
-  debug: boolean
-  setDebug: React.Dispatch<React.SetStateAction<boolean>>
-  fullscreenOnLoad: boolean
-  setFullscreenOnLoad: React.Dispatch<React.SetStateAction<boolean>>
-  startOnLoaded: boolean
-  setStartOnLoaded: React.Dispatch<React.SetStateAction<boolean>>
-  buttons: EJS_Buttons
-  setButtons: React.Dispatch<React.SetStateAction<EJS_Buttons>>
-  pathToData: string
-  setPathToData: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const EmuPropsContext = createContext<EmuPropsContextType | null>(null)
@@ -44,23 +104,28 @@ type Props = {
 export const EmuPropsProvider: React.FunctionComponent<Props> = ({
   children,
 }) => {
-  const [rom, setRom] = useState<string>()
-  const [biosUrl, setBiosUrl] = useState<string>()
-  const [platform, setPlatform] = useState<EJS_core>("fceumm")
   const [isEmulatorDialogOpen, setIsEmulatorDialogOpen] = useState(false)
-  const [loadState, setLoadState] = useState<string>()
-  const [gamePatchUrl, setGamePatchUrl] = useState<string>()
-  const [debug, setDebug] = useState(false)
-  const [fullscreenOnLoad, setFullscreenOnLoad] = useState(false)
-  const [startOnLoaded, setStartOnLoaded] = useState(false)
-  const [buttons, setButtons] = useState<EJS_Buttons>(defaultButtons)
-  const [pathToData, setPathToData] = useState<string>(pathToDataLinks[0])
+
+  const [
+    {
+      rom,
+      biosUrl,
+      platform,
+      gamePatchUrl,
+      loadState,
+      debug,
+      fullscreenOnLoad,
+      startOnLoaded,
+      buttons,
+      pathToData,
+    },
+    dispatch,
+  ] = useReducer(emuPropsReducer, emuPropsReducerInitialState)
 
   const emuProps = {
     EJS_core: platform,
     EJS_gameUrl: rom!,
-    EJS_pathtodata:
-      "https://cdn.jsdelivr.net/gh/EmulatorJS/EmulatorJS@latest/data", // "/data"
+    EJS_pathtodata: pathToData || defaultPathToData,
     ...(biosUrl && { EJS_biosUrl: biosUrl }),
     ...(loadState && { EJS_loadStateURL: loadState }),
     ...(gamePatchUrl && { EJS_gamePatchUrl: gamePatchUrl }),
@@ -74,43 +139,34 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
     setIsEmulatorDialogOpen(open)
 
     if (!open) {
-      setRom(undefined)
+      dispatch({ type: "setRom", payload: undefined })
     }
   }
 
   const onPlatformChange = (platform: EJS_core) => {
-    setPlatform(platform)
-    setBiosUrl(undefined)
+    dispatch({ type: "setPlatform", payload: platform })
+    dispatch({ type: "setBiosUrl", payload: undefined })
   }
 
   return (
     <EmuPropsContext.Provider
       value={{
         rom,
-        setRom,
         biosUrl,
-        setBiosUrl,
         platform,
-        setPlatform,
         isEmulatorDialogOpen,
         setIsEmulatorDialogOpen,
         onEmulatorDialogToggle,
         onPlatformChange,
         emuProps,
         loadState,
-        setLoadState,
         gamePatchUrl,
-        setGamePatchUrl,
         debug,
-        setDebug,
         fullscreenOnLoad,
-        setFullscreenOnLoad,
         startOnLoaded,
-        setStartOnLoaded,
         buttons,
-        setButtons,
         pathToData,
-        setPathToData,
+        dispatch,
       }}
     >
       {children}

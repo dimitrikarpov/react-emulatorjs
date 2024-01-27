@@ -13,13 +13,13 @@ import { useEmuPropsContext } from "../useEmuPropsContext"
 import { findCoreBioses } from "react-emulatorjs"
 
 export const BiosSelectDialog = () => {
-  const { platform, biosUrl, setBiosUrl } = useEmuPropsContext()
+  const { platform, biosUrl, dispatch } = useEmuPropsContext()
   const [open, setOpen] = useState(false)
 
   const bioses = findCoreBioses(platform)?.filter(({ url }) => Boolean(url))
 
   const onSelect = (value: string | undefined) => {
-    setBiosUrl(value)
+    dispatch({ type: "setBiosUrl", payload: value })
     setOpen(false)
   }
 
