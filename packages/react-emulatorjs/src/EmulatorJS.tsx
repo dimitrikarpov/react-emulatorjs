@@ -17,6 +17,7 @@ export const EmulatorJS: React.FunctionComponent<Props> = (props) => {
     iframeGlobal.EJS_player = "#game"
 
     if (!props.EJS_pathtodata) iframeGlobal.EJS_pathtodata = defaultPathToData
+    if (!props.EJS_gameName) iframeGlobal.EJS_gameName = "gameNamePlaceholder"
 
     for (const key in props) {
       // @ts-ignore
