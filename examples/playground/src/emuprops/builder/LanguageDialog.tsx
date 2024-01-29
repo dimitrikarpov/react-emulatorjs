@@ -16,7 +16,10 @@ const defaultLanguage: Language = "en-US"
 
 export const LanguageDialog = () => {
   const [open, setOpen] = useState(false)
-  const { language, dispatch } = useEmuPropsContext()
+  const {
+    formState: { language },
+    dispatch,
+  } = useEmuPropsContext()
 
   const onSelect = (value: string) => {
     dispatch({ type: "setLanguage", payload: value as Language })

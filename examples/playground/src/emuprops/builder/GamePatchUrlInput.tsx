@@ -5,7 +5,10 @@ import { Input } from "../../@/components/ui/input"
 export const GamPatchUrlInput = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { gamePatchUrl: file, dispatch } = useEmuPropsContext()
+  const {
+    formState: { gamePatchUrl: file },
+    dispatch,
+  } = useEmuPropsContext()
 
   const setFile = (file: string | undefined) => {
     dispatch({ type: "setGamePatchUrl", payload: file })

@@ -8,7 +8,9 @@ type Props = {
 export const PathToDataInput: React.FunctionComponent<Props> = ({
   onSelect,
 }) => {
-  const { pathToData } = useEmuPropsContext()
+  const {
+    formState: { pathToData },
+  } = useEmuPropsContext()
 
   return (
     <div className="flex flex-col flex-wrap gap-3">

@@ -5,7 +5,10 @@ import { Input } from "../../@/components/ui/input"
 export const LoadStateInput = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { loadState: file, dispatch } = useEmuPropsContext()
+  const {
+    formState: { loadState: file },
+    dispatch,
+  } = useEmuPropsContext()
 
   const setFile = (file: string | undefined) => {
     dispatch({ type: "setLoadState", payload: file })

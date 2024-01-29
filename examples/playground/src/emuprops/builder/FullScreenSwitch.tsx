@@ -3,7 +3,10 @@ import { Switch } from "../../@/components/ui/switch"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const FullScreenSwitch = () => {
-  const { fullscreenOnLoad: value, dispatch } = useEmuPropsContext()
+  const {
+    formState: { fullscreenOnLoad: value },
+    dispatch,
+  } = useEmuPropsContext()
 
   const onCheckedChange = (checked: boolean) => {
     dispatch({ type: "setFullscreenOnLoad", payload: checked })

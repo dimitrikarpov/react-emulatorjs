@@ -13,7 +13,10 @@ import { useState } from "react"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const CoreSelectDialog = () => {
-  const { platform, onPlatformChange } = useEmuPropsContext()
+  const {
+    formState: { platform },
+    onPlatformChange,
+  } = useEmuPropsContext()
   const [open, setOpen] = useState(false)
 
   const onChange = (value: EJS_core) => {

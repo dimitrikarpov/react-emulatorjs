@@ -13,7 +13,10 @@ import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const PathToDataDialog = () => {
   const [open, setOpen] = useState(false)
-  const { pathToData, dispatch } = useEmuPropsContext()
+  const {
+    formState: { pathToData },
+    dispatch,
+  } = useEmuPropsContext()
 
   const onSelect = (value: string) => {
     dispatch({ type: "setPathToData", payload: value })

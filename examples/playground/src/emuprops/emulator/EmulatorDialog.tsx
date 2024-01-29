@@ -11,8 +11,7 @@ import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const EmulatorDialog = () => {
   const {
-    rom,
-    platform,
+    formState: { rom, platform },
     isEmulatorDialogOpen,
     emuProps,
     onEmulatorDialogToggle,

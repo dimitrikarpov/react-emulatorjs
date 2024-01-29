@@ -6,7 +6,9 @@ type Props = {
 }
 
 export const LanguageInput: React.FunctionComponent<Props> = ({ onSelect }) => {
-  const { language } = useEmuPropsContext()
+  const {
+    formState: { language },
+  } = useEmuPropsContext()
 
   console.log({ language })
 
