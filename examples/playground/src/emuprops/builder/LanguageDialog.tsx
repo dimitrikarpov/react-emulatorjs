@@ -8,41 +8,45 @@ import {
   DialogTrigger,
 } from "../../@/components/ui/dialog"
 import { Button } from "../../@/components/ui/button"
-import { PathToDataInput } from "./PathToDataInput"
 import { useEmuPropsContext } from "../useEmuPropsContext"
+import { LanguageInput } from "./LanguageInput"
+import { Language } from "react-emulatorjs"
 
-export const PathToDataDialog = () => {
+const defaultLanguage: Language = "en-US"
+
+export const LanguageDialog = () => {
   const [open, setOpen] = useState(false)
   const {
-    formState: { pathToData },
+    formState: { language },
     dispatch,
   } = useEmuPropsContext()
 
   const onSelect = (value: string) => {
-    dispatch({ type: "setPathToData", payload: value })
+    dispatch({ type: "setLanguage", payload: value as Language })
     setOpen(false)
   }
 
   return (
     <div className="flex gap-5 items-center">
-      <p>DATA</p>
+      <p>LANGUAGE</p>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">Select path to data</Button>
+          <Button variant="outline">Select language</Button>
         </DialogTrigger>
         <DialogContent className="max-w-3xl">
           <DialogHeader>
-            <DialogTitle>Path to Data</DialogTitle>
-            <DialogDescription>
-              Select path to emulator's data
-            </DialogDescription>
+            <DialogTitle>Language</DialogTitle>
+            <DialogDescription>Select language</DialogDescription>
           </DialogHeader>
-          <PathToDataInput onSelect={onSelect} />
+          <LanguageInput onSelect={onSelect} />
         </DialogContent>
       </Dialog>
 
-      <p className="w-52 text-ellipsis overflow-hidden" title={pathToData}>
-        {pathToData}
+      <p
+        className="w-52 text-ellipsis overflow-hidden"
+        title={language || defaultLanguage}
+      >
+        {language || defaultLanguage}
       </p>
     </div>
   )

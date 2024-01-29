@@ -1,5 +1,17 @@
 # react-emulatorjs
 
+## 2.2.1
+
+### Patch Changes
+
+- added EJS_Language option
+
+## 2.2.0
+
+### Minor Changes
+
+- update default path to data
+
 ## 2.1.1
 
 ### Patch Changes

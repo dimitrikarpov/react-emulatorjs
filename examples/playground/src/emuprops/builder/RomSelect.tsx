@@ -5,7 +5,10 @@ import { useEmuPropsContext } from "../useEmuPropsContext"
 export const RomSelect = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { rom: file, dispatch } = useEmuPropsContext()
+  const {
+    formState: { rom: file },
+    dispatch,
+  } = useEmuPropsContext()
 
   const setFile = (file: string | undefined) => {
     dispatch({ type: "setRom", payload: file })

@@ -6,7 +6,9 @@ export const PropItemButtons: React.FunctionComponent<PropItemProps> = ({
   name,
   value,
 }) => {
-  const { buttons } = useEmuPropsContext()
+  const {
+    formState: { buttons },
+  } = useEmuPropsContext()
   const equalsDefault = isButtonsInDefaultState(buttons)
 
   if (equalsDefault) return null

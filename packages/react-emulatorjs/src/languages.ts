@@ -1,0 +1,16 @@
+export const languages = {
+  "en-US": "English",
+  "pt-BR": "Portuguese",
+  "es-ES": "Spanish",
+  "el-GR": "Greek",
+  "ja-JA": "Japanese",
+  "zh-CN": "Chinese",
+  "hi-HI": "Hindi",
+  "ar-AR": "Arabic",
+  "jv-JV": "Javanese",
+  "ben-BEN": "Bengali",
+  "ru-RU": "Russian",
+  "de-GER": "German",
+  "ko-KO": "Korean",
+  "af-FR": "French",
+} as const

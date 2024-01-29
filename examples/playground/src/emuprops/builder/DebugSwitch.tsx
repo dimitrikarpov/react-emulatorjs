@@ -3,7 +3,10 @@ import { Switch } from "../../@/components/ui/switch"
 import { useEmuPropsContext } from "../useEmuPropsContext"
 
 export const DebugSwitch = () => {
-  const { debug: value, dispatch } = useEmuPropsContext()
+  const {
+    formState: { debug: value },
+    dispatch,
+  } = useEmuPropsContext()
 
   const onCheckedChange = (checked: boolean) => {
     dispatch({ type: "setDebug", payload: checked })

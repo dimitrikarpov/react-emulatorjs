@@ -8,11 +8,19 @@ type Props = {
 export const PathToDataInput: React.FunctionComponent<Props> = ({
   onSelect,
 }) => {
-  const { pathToData } = useEmuPropsContext()
+  const {
+    formState: { pathToData },
+  } = useEmuPropsContext()
 
   return (
     <div className="flex flex-col flex-wrap gap-3">
-      {[defaultPathToData, "/data"].map((path) => (
+      {[
+        defaultPathToData,
+        "https://cdn.emulatorjs.org/stable/data",
+        "https://cdn.emulatorjs.org/latest/data",
+        "https://cdn.emulatorjs.org/nightly/data",
+        "/data",
+      ].map((path) => (
         <div key={path}>
           <input
             type="radio"
