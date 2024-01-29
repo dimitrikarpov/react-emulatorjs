@@ -1,3 +1,7 @@
+import { languages } from "./languages"
+
+export type Language = keyof typeof languages
+
 export type PlatformId =
   | "3do"
   | "arcade"
@@ -134,7 +138,7 @@ type MainOptions = {
    * @default ```en-US```
    * @link https://emulatorjs.org/docs/Options.html#ejs-language
    */
-  EJS_language?: string
+  EJS_language?: Language
   /**
    * You can set the paths to the files used by the emulator. This is useful if you want to host the files in a different why than the default, like a blob or a cdn.
    * @link https://emulatorjs.org/docs/Options.html#ejs-paths

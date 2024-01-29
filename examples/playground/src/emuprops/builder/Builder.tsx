@@ -8,6 +8,7 @@ import { LoadStateInput } from "./LoadStateInput"
 import { RomSelect } from "./RomSelect"
 import { StartOnLoadedSwitch } from "./StartOnLoadedSwitch"
 import { PathToDataDialog } from "./PathToDataDialog"
+import { LanguageDialog } from "./LanguageDialog"
 
 export const Builder = () => {
   return (
@@ -22,6 +23,7 @@ export const Builder = () => {
       <StartOnLoadedSwitch />
       <ButtonsDialog />
       <PathToDataDialog />
+      <LanguageDialog />
     </div>
   )
 }

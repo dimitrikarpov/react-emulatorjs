@@ -11,6 +11,7 @@ const PropToComponent: Record<
   EJS_core: PropItemString,
   EJS_gameUrl: PropItemGameUrl,
   EJS_pathtodata: PropItemString,
+  EJS_language: PropItemString,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   EJS_biosUrl: PropItemString,

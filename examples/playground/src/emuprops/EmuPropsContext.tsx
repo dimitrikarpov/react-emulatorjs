@@ -1,5 +1,10 @@
 import { createContext, useReducer, useState } from "react"
-import { EJS_core, Settings, defaultPathToData } from "react-emulatorjs"
+import {
+  EJS_core,
+  Language,
+  Settings,
+  defaultPathToData,
+} from "react-emulatorjs"
 import {
   type EJS_Buttons,
   defaultButtons,
@@ -18,6 +23,7 @@ type emuPropsReducerState = {
   startOnLoaded: boolean
   buttons: EJS_Buttons
   pathToData: string
+  language?: Language
 }
 
 type emuPropsReducerAction =
@@ -31,6 +37,7 @@ type emuPropsReducerAction =
   | { type: "setStartOnLoaded"; payload: boolean }
   | { type: "setButtons"; payload: EJS_Buttons }
   | { type: "setPathToData"; payload: string }
+  | { type: "setLanguage"; payload: Language | undefined }
 
 const emuPropsReducerInitialState: emuPropsReducerState = {
   rom: undefined,
@@ -43,6 +50,7 @@ const emuPropsReducerInitialState: emuPropsReducerState = {
   startOnLoaded: false,
   buttons: defaultButtons,
   pathToData: pathToDataLinks[0],
+  language: undefined,
 }
 
 const emuPropsReducer = (
@@ -70,6 +78,8 @@ const emuPropsReducer = (
       return { ...state, buttons: action.payload }
     case "setPathToData":
       return { ...state, pathToData: action.payload }
+    case "setLanguage":
+      return { ...state, language: action.payload }
     default:
       return state
   }
@@ -86,6 +96,8 @@ type EmuPropsContextType = {
   startOnLoaded: boolean
   buttons: EJS_Buttons
   pathToData: string
+  language: Language | undefined
+
   dispatch: React.Dispatch<emuPropsReducerAction>
 
   emuProps: Settings
@@ -118,6 +130,7 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
       startOnLoaded,
       buttons,
       pathToData,
+      language,
     },
     dispatch,
   ] = useReducer(emuPropsReducer, emuPropsReducerInitialState)
@@ -133,6 +146,7 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
     ...(fullscreenOnLoad && { EJS_fullscreenOnLoad: true }),
     ...(startOnLoaded && { EJS_startOnLoaded: true }),
     ...(!isButtonsInDefaultState(buttons) && { EJS_Buttons: buttons }),
+    ...(language && { EJS_language: language }),
   } as Settings
 
   const onEmulatorDialogToggle = (open: boolean) => {
@@ -166,6 +180,7 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
         startOnLoaded,
         buttons,
         pathToData,
+        language,
         dispatch,
       }}
     >
