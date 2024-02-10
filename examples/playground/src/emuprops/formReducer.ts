@@ -1,6 +1,7 @@
 import { EJS_core, Language } from "react-emulatorjs"
 import { type EJS_Buttons, defaultButtons } from "../@/lib/buttons"
 import { pathToDataLinks } from "../@/lib/path-to-data"
+import { romsCollection } from "./romsCollection"
 
 export type FormState = {
   rom?: string
@@ -30,10 +31,11 @@ export type FormAction =
   | { type: "setLanguage"; payload: Language | undefined }
 
 export const formInitialState: FormState = {
-  platform: "fceumm",
+  rom: window.location.href + romsCollection[0].url,
+  platform: romsCollection[0].core,
   debug: false,
   fullscreenOnLoad: false,
-  startOnLoaded: false,
+  startOnLoaded: true,
   buttons: defaultButtons,
   pathToData: pathToDataLinks[0],
 }
