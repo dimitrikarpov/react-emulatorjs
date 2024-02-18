@@ -31,7 +31,7 @@ export type FormAction =
   | { type: "setLanguage"; payload: Language | undefined }
 
 export const formInitialState: FormState = {
-  rom: window.location.href + romsCollection[0].url,
+  rom: romsCollection[0].url,
   platform: romsCollection[0].core,
   debug: false,
   fullscreenOnLoad: false,

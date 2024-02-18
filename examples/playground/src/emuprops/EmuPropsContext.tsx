@@ -33,10 +33,6 @@ export const EmuPropsProvider: React.FunctionComponent<Props> = ({
 
   const onEmulatorDialogToggle = (open: boolean) => {
     setIsEmulatorDialogOpen(open)
-
-    if (!open) {
-      dispatch({ type: "setRom", payload: undefined })
-    }
   }
 
   const onPlatformChange = (platform: EJS_core) => {

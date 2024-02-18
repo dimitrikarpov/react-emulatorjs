@@ -1,7 +1,8 @@
 import { ChangeEvent, useEffect, useRef } from "react"
 import { Input } from "../../../@/components/ui/input"
 import { useEmuPropsContext } from "../../useEmuPropsContext"
-import { romsCollection } from "../../romsCollection"
+import { getCollectionItemByUrl, romsCollection } from "../../romsCollection"
+import { Badge } from "../../../@/components/ui/badge"
 
 export const RomSelect = () => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -9,6 +10,7 @@ export const RomSelect = () => {
   const {
     formState: { rom: file },
     dispatch,
+    onPlatformChange,
   } = useEmuPropsContext()
 
   const setFile = (file: string | undefined) => {
@@ -27,7 +29,10 @@ export const RomSelect = () => {
   }
 
   const onCollectionItemClick = (url: string) => {
+    const item = getCollectionItemByUrl(url)
+
     setFile(url)
+    onPlatformChange(item.core)
   }
 
   useEffect(() => {
@@ -36,35 +41,42 @@ export const RomSelect = () => {
     }
   }, [file])
 
-  console.log({ file })
+  const isLocalFileSelected = file?.startsWith("blob:")
+
+  const picture =
+    !file || isLocalFileSelected
+      ? undefined
+      : getCollectionItemByUrl(file!).picture
 
   return (
-    <div>
-      <div className="flex flex-col">
+    <div className="flex flex-row gap-3">
+      <div className="flex flex-col gap-1 w-1/2">
         {romsCollection.map((item) => (
-          <div key={item.name}>
-            <input
-              type="radio"
-              id={item.name}
-              value={item.name}
-              checked={file === item.url}
-              onChange={() => onCollectionItemClick(item.url)}
-            />
-            <label htmlFor={item.name} className="pl-3">
-              {item.name}
-              <span className="text-gray-600 hover:text-gray-900 ml-5">
-                {item.core}
-              </span>
+          <div key={item.name} className="flex justify-between">
+            <div>
+              <input
+                type="radio"
+                id={item.name}
+                value={item.name}
+                onChange={() => onCollectionItemClick(item.url)}
+                checked={file === item.url}
+              />
+              <label htmlFor={item.name} className="pl-3 ml-1 mr-1">
+                {item.name}
+              </label>
+            </div>
+            <div>
+              <Badge variant="outline">{item.platform}</Badge>
               <a href={item.site} className="ml-4">
-                home page
+                itch.io
               </a>
-            </label>
+            </div>
           </div>
         ))}
 
         <div className="flex flex-row items-baseline">
-          <input type="radio" checked={file?.startsWith("blob:")} />
-          <span className="ml-3">choose local file</span>
+          <input type="radio" checked={isLocalFileSelected} readOnly />
+          <span className="ml-3">local file</span>
           <Input
             type="file"
             ref={inputRef}
@@ -73,6 +85,10 @@ export const RomSelect = () => {
             className="w-48 ml-3"
           />
         </div>
+      </div>
+
+      <div className="w-1/2">
+        <img src={picture} alt="" />
       </div>
     </div>
   )
