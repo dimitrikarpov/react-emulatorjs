@@ -8,6 +8,8 @@ type Props = Settings
 export const EmulatorJS: React.FunctionComponent<Props> = (props) => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
+  console.log({ props })
+
   const setIframeGlobals = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

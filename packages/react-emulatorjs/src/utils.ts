@@ -1,3 +1,4 @@
+import { CoreName } from "../dist"
 import { defaultBiosesUrls } from "./defaultBiosesUrls"
 import { platforms } from "./platforms"
 import { Bios, BiosesUrls, EJS_core } from "./types"
