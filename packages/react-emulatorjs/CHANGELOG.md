@@ -1,5 +1,12 @@
 # react-emulatorjs
 
+## 2.2.3
+
+### Patch Changes
+
+- - fix broken library import
+  - fix docs links
+
 ## 2.2.2
 
 ### Patch Changes
