@@ -1,21 +1,17 @@
-<p align="center">
-  <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.png">
-  <img src="docs/logo-light.png" width="480" height="180" alt="Logo">
-</picture>
-</p>
-
-<p align="center">
-  A thing for playing retro games
-</p>
-
-<div align="center">
-  <a href="https://dimitrikarpov.github.io/react-emulatorjs/">Playground</a> | <a href="https://tsdocs.dev/docs/react-emulatorjs/2.1.0/types/Settings.html">Settings API</a> 
-</div>
-
 # react-emulatorjs 🕹️
 
-Integrate powerfull [emulatorjs](https://emulatorjs.org/) in to Your React project
+<div align = center>
+A thing for playing retro games
+</div>
+<br/>
+<div align = center>
+
+![Static Badge](https://img.shields.io/badge/demo-playground?style=for-the-badge&logo=githubpages&labelColor=%23C21292&color=%239195F6&link=https%3A%2F%2Fdimitrikarpov.github.io%2Freact-emulatorjs)
+![Static Badge](https://img.shields.io/badge/npm-react--emulatorjs?style=for-the-badge&logo=npm&color=%239195F6&labelColor=FF6969&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Freact-emulatorjs)
+![Static Badge](https://img.shields.io/badge/github-777?style=for-the-badge&logo=github&labelColor=%2300A9FF&color=%23D0A2F7&link=https%3A%2F%2Fgithub.com%2Fdimitrikarpov%2Freact-emulatorjs)
+![Static Badge](https://img.shields.io/badge/api-api?style=for-the-badge&logo=docsdotrs&labelColor=blue&color=%239195F6&link=https%3A%2F%2Fdimitrikarpov.github.io%2Freact-emulatorjs)
+
+</div>
 
 ### what is emulatorjs
 
@@ -23,7 +19,7 @@ Emulatorjs is a js library to configure and run retro games in web version of [r
 
 ### what is react-emulatorjs
 
-`react-emulatorjs` is a easiest way to use emulatorjs in React with full typescript support including all emulatorjs options.
+`react-emulatorjs` is a easiest way to use emulatorjs in React with full typescript support including all emulatorjs options. Available [cores](https://emulatorjs.org/docs/Options.html), available [options](https://emulatorjs.org/docs/Options.html).
 
 ## ⚡ quick start
 
@@ -33,10 +29,9 @@ Install react-emulatorjs
 npm install react-emulatorjs
 ```
 
-Next we have to provide link to ROM. It can be somethere in the internet. Or we can use local file. Let's create a file handler first.
+Next we have to provide link to ROM. It can be somewhere in the internet. Or we can use local file. Let's create a file handler first.
 
 ```typescript
-import "./App.css"
 import { ChangeEvent, useState } from "react"
 import { EmulatorJS, defaultPathToData } from "react-emulatorjs"
 
@@ -63,7 +58,6 @@ function App() {
 Next we have to select `core` and start the emulator
 
 ```typescript
-import "./App.css"
 import { ChangeEvent, useState } from "react"
 import { EmulatorJS, defaultPathToData } from "react-emulatorjs"
 
@@ -101,9 +95,9 @@ Checkout codesandbox [demo](https://codesandbox.io/p/sandbox/react-emulatorjs-3r
 
 ### 📎 using locally installed cores
 
-The most important option is `EJS_pathtodata`. This path points to emulatorjs's binaries. And the best performance option is keep whem close as possible, on Your sever. And it is very easy.
+The most important option is `EJS_pathtodata`. This path points to emulatorjs's binaries. And the best performance option is keep them close as possible, on Your sever. And it is very easy.
 
-- Just download `data` folder from [emulatorjs repository](https://github.com/EmulatorJS/EmulatorJS/tree/main/data) and copy in to Your `public` folder. For example, if You are using 'vite' data folder should be in `/public/data` folder.
+- Just extract `data` folder from latest emulatorjs [release](https://github.com/EmulatorJS/EmulatorJS/releases) and copy in to project's `public` folder. For example, if You are using 'vite' data folder should be in `/public/data`.
 - Update prop with new path
   ```typescript
   <EmulatorJS
@@ -112,6 +106,12 @@ The most important option is `EJS_pathtodata`. This path points to emulatorjs's 
   />
   ```
 
-## Links
+## Docs and examples
 
-- [playground source code](https://github.com/dimitrikarpov/react-emulatorjs/tree/main/examples/playground)
+- [npm](https://www.npmjs.com/package/react-emulatorjs)
+- [online playground](https://dimitrikarpov.github.io/react-emulatorjs/)
+- [online playground: source code](https://github.com/dimitrikarpov/react-emulatorjs/tree/main/examples/playground)
+- [quick start demo sandbox](https://codesandbox.io/p/sandbox/react-emulatorjs-3rm8c3)
+- [react-emulatorjs: API](https://tsdocs.dev/docs/react-emulatorjs/2.1.0/types/Settings.html)
+- [EmulatorJS: available options](https://emulatorjs.org/docs/Options.html)
+- [EmulatorJS: available cores](https://emulatorjs.org/docs/Systems.html)
