@@ -3,12 +3,10 @@ import { buildEmulator } from "./buildEmulator"
 import { Settings } from "./types"
 import { defaultPathToData } from "./defaultPathToData"
 
-type Props = Settings
+type Props = { width?: number; height?: number } & Settings
 
 export const EmulatorJS: React.FunctionComponent<Props> = (props) => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
-
-  console.log({ props })
 
   const setIframeGlobals = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -47,13 +45,14 @@ export const EmulatorJS: React.FunctionComponent<Props> = (props) => {
     loader: `${props.EJS_pathtodata || defaultPathToData}/loader.js`,
   }).innerHTML
 
+  const width = props.width || 640
+  const height = props.height || 480
+
   return (
     <iframe
       ref={iframeRef}
       srcDoc={html}
-      height={480}
-      width={640}
-      style={{ border: 0 }}
+      style={{ border: 0, width: `${width}px`, height: `${height}px` }}
     ></iframe>
   )
 }

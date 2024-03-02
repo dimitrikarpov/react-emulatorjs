@@ -14,6 +14,8 @@ export const getEmuProps = ({
   startOnLoaded,
   buttons,
   language,
+  width,
+  height,
 }: FormState) => {
   const emuProps = {
     EJS_core: platform,
@@ -27,6 +29,7 @@ export const getEmuProps = ({
     ...(startOnLoaded && { EJS_startOnLoaded: true }),
     ...(!isButtonsInDefaultState(buttons) && { EJS_Buttons: buttons }),
     ...(language && { EJS_language: language }),
+    ...(width && { width, height }),
   } as Settings
 
   return emuProps

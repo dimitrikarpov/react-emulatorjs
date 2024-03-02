@@ -22,6 +22,9 @@ const PropToComponent: Record<
   EJS_fullscreenOnLoad: PropItemBoolean,
   EJS_startOnLoaded: PropItemBoolean,
   EJS_Buttons: PropItemButtons,
+  //
+  width: PropItemString,
+  height: PropItemString,
 }
 
 export const PropItem: React.FunctionComponent<PropItemProps> = (props) => {
