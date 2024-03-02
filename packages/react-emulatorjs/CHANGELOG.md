@@ -1,5 +1,11 @@
 # react-emulatorjs
 
+## 2.2.4
+
+### Patch Changes
+
+- add `height` and `width` params
+
 ## 2.2.3
 
 ### Patch Changes
