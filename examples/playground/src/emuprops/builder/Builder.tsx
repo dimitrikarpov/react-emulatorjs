@@ -9,6 +9,7 @@ import { StartOnLoadedSwitch } from "./StartOnLoadedSwitch"
 import { PathToDataDialog } from "./PathToDataDialog"
 import { LanguageDialog } from "./LanguageDialog"
 import { RomSelectDialog } from "./rom-select/RomSelectDialog"
+import { SizeSelect } from "./SizeSelect"
 
 export const Builder = () => {
   return (
@@ -24,6 +25,7 @@ export const Builder = () => {
       <ButtonsDialog />
       <PathToDataDialog />
       <LanguageDialog />
+      <SizeSelect />
     </div>
   )
 }

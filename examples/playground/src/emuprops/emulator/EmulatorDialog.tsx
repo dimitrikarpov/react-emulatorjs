@@ -17,6 +17,8 @@ export const EmulatorDialog = () => {
     onEmulatorDialogToggle,
   } = useEmuPropsContext()
 
+  console.log({ emuProps })
+
   return (
     <Dialog onOpenChange={onEmulatorDialogToggle}>
       <DialogTrigger asChild>
@@ -24,7 +26,7 @@ export const EmulatorDialog = () => {
           Start Emulator
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-4xl w-fit">
         <DialogHeader>
           <DialogTitle></DialogTitle>
         </DialogHeader>

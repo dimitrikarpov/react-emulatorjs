@@ -15,6 +15,8 @@ export type FormState = {
   buttons: EJS_Buttons
   pathToData: string
   language?: Language
+  width?: number
+  height?: number
 }
 
 export type FormAction =
@@ -29,6 +31,8 @@ export type FormAction =
   | { type: "setButtons"; payload: EJS_Buttons }
   | { type: "setPathToData"; payload: string }
   | { type: "setLanguage"; payload: Language | undefined }
+  | { type: "setWidth"; payload: number | undefined }
+  | { type: "setHeight"; payload: number | undefined }
 
 export const formInitialState: FormState = {
   rom: romsCollection[0].url,
@@ -64,6 +68,10 @@ export const formReducer = (state: FormState, action: FormAction) => {
       return { ...state, pathToData: action.payload }
     case "setLanguage":
       return { ...state, language: action.payload }
+    case "setWidth":
+      return { ...state, width: action.payload }
+    case "setHeight":
+      return { ...state, height: action.payload }
     default:
       return state
   }
