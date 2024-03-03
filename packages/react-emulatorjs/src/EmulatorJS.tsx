@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from "react"
 import { buildEmulator } from "./buildEmulator"
 import { Settings } from "./types"
 import { defaultPathToData } from "./defaultPathToData"
+import { defaultSize } from "./defaultSize"
 
 type Props = { width?: number; height?: number } & Settings
 
@@ -41,12 +42,14 @@ export const EmulatorJS: React.FunctionComponent<Props> = (props) => {
     }, 100)
   }, [setIframeGlobals])
 
+  const width = props.width || defaultSize.width
+  const height = props.height || defaultSize.height
+
   const html = buildEmulator({
     loader: `${props.EJS_pathtodata || defaultPathToData}/loader.js`,
+    width,
+    height,
   }).innerHTML
-
-  const width = props.width || 640
-  const height = props.height || 480
 
   return (
     <iframe
