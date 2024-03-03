@@ -1,5 +1,11 @@
 # react-emulatorjs
 
+## 2.2.5
+
+### Patch Changes
+
+- fix size prop
+
 ## 2.2.4
 
 ### Patch Changes
