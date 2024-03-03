@@ -1,6 +1,6 @@
 {
   "name": "react-emulatorjs",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "React wrapper for emulatorjs",
   "author": "Dimitri Karpov <karpov.dimon@gmail.com>",
   "license": "ISC",
