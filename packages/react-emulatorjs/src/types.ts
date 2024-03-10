@@ -134,7 +134,7 @@ type MainOptions = {
    */
   EJS_pathtodata: string
   /**
-   * Set the emulator UI to a certian language
+   * Set the emulator UI to a certain language
    * @default ```en-US```
    * @link https://emulatorjs.org/docs/Options.html#ejs-language
    */
@@ -145,7 +145,7 @@ type MainOptions = {
    */
   EJS_paths?: Record<string, string>
   /**
-   * Sets the defauly volume for the emulator. 0=muted, 1=max
+   * Sets the default volume for the emulator. 0=muted, 1=max
    * @default ```0.5```
    * @link https://emulatorjs.org/docs/Options.html#ejs-volume
    */

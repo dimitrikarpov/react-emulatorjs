@@ -1,4 +1,4 @@
-import { Settings, defaultPathToData } from "react-emulatorjs"
+import { Settings } from "react-emulatorjs"
 import { isButtonsInDefaultState } from "../@/lib/buttons"
 import { FormState } from "./formReducer"
 
@@ -20,7 +20,7 @@ export const getEmuProps = ({
   const emuProps = {
     EJS_core: platform,
     EJS_gameUrl: rom!,
-    EJS_pathtodata: pathToData || defaultPathToData,
+    ...(pathToData && { EJS_pathtodata: pathToData }),
     ...(biosUrl && { EJS_biosUrl: biosUrl }),
     ...(loadState && { EJS_loadStateURL: loadState }),
     ...(gamePatchUrl && { EJS_gamePatchUrl: gamePatchUrl }),

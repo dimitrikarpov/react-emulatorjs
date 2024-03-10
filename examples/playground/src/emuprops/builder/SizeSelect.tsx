@@ -22,8 +22,6 @@ export const SizeSelect = () => {
 
   const displayValue = Boolean(width) && Boolean(height)
 
-  console.log({ width, height })
-
   return (
     <div className="flex gap-5 items-center">
       <div>SIZE</div>

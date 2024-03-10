@@ -1,1 +1,7 @@
-export const defaultPathToData = "https://cdn.emulatorjs.org/4.0.8/data"
+export const cdnPathToDataUrls = [
+  "https://cdn.emulatorjs.org/stable/data",
+  "https://cdn.emulatorjs.org/latest/data",
+  "https://cdn.emulatorjs.org/nightly/data",
+] as const
+
+export const defaultPathToData = cdnPathToDataUrls[0]

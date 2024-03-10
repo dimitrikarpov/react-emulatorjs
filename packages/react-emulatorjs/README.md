@@ -29,11 +29,13 @@ Install react-emulatorjs
 npm install react-emulatorjs
 ```
 
-Next we have to provide link to ROM. It can be somewhere in the internet. Or we can use local file. Let's create a file handler first.
+Next we have to provide url to ROM. It can be somewhere in the internet. Or we can upload a local file. Let's create a file handler to make url to our local blob.
+
+Next we have to select `core` and start the emulator when the `rom` is ready.
 
 ```typescript
 import { ChangeEvent, useState } from "react"
-import { EmulatorJS, defaultPathToData } from "react-emulatorjs"
+import { EmulatorJS } from "react-emulatorjs"
 
 function App() {
   const [rom, setRom] = useState<string>()
@@ -46,47 +48,17 @@ function App() {
 
   return (
     <>
-      <div>
-        <input type="file" onChange={onFileSelect} />
-      </div>
-    </>
-  )
-}
-
-```
-
-Next we have to select `core` and start the emulator
-
-```typescript
-import { ChangeEvent, useState } from "react"
-import { EmulatorJS, defaultPathToData } from "react-emulatorjs"
-
-function App() {
-  const [rom, setRom] = useState<string>()
-
-  const onFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files?.[0]) return
-    const file = e.target.files?.[0]
-    setRom(URL.createObjectURL(file))
-  }
-
-  return (
-    <>
-      <div>
-        <input type="file" onChange={onFileSelect} />
-      </div>
+      <input type="file" onChange={onFileSelect} />
 
       {rom && (
         <EmulatorJS
-          EJS_core="nes" // selected core
-          EJS_gameUrl={rom} // rom file
-          EJS_pathtodata={defaultPathToData} // path to data
+          EJS_core="nes" // emulator core
+          EJS_gameUrl={rom} // rom url
         />
       )}
     </>
   )
 }
-
 ```
 
 And thats all! Now You can run `nes` roms in browser.
