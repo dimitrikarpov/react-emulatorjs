@@ -1,6 +1,5 @@
 import { EJS_core, Language } from "react-emulatorjs"
 import { type EJS_Buttons, defaultButtons } from "../@/lib/buttons"
-import { pathToDataLinks } from "../@/lib/path-to-data"
 import { romsCollection } from "./romsCollection"
 
 export type FormState = {
@@ -13,7 +12,7 @@ export type FormState = {
   fullscreenOnLoad: boolean
   startOnLoaded: boolean
   buttons: EJS_Buttons
-  pathToData: string
+  pathToData?: string
   language?: Language
   width?: number
   height?: number
@@ -41,7 +40,6 @@ export const formInitialState: FormState = {
   fullscreenOnLoad: false,
   startOnLoaded: true,
   buttons: defaultButtons,
-  pathToData: pathToDataLinks[0],
 }
 
 export const formReducer = (state: FormState, action: FormAction) => {

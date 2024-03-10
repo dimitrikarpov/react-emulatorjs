@@ -17,8 +17,6 @@ export const EmulatorDialog = () => {
     onEmulatorDialogToggle,
   } = useEmuPropsContext()
 
-  console.log({ emuProps })
-
   return (
     <Dialog onOpenChange={onEmulatorDialogToggle}>
       <DialogTrigger asChild>

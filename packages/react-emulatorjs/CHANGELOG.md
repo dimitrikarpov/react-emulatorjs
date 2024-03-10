@@ -1,5 +1,11 @@
 # react-emulatorjs
 
+## 2.2.6
+
+### Patch Changes
+
+- using CDN by default
+
 ## 2.2.5
 
 ### Patch Changes
